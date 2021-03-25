@@ -1,0 +1,24 @@
+server: nmap -vv -sV -iL servers.txt -oX servers.xml
+
+Desktop: nmap -vv -A -iL auth.txt -oX auth.xml
+
+N/W : nmap -vv -A -Pn -iL Networks.txt -oX Networks.xml
+
+
+-------------------------------------------------------------
+........................Nessus.........................
+
+Install nessus professional and activate using key 
+
+nessus access: https://localhost:8834  or https://127.0.0.1:8834
+
+ports need to give in policies: 1-65535
+
+auth scan for servers and 10 systems and unauth scan for remaining systems and network
+
+1- create policies by selecting advance scan for auth, (unauth and network), separate unauth and network if needed ( disable ping for network).
+2- run scan by selecting user defined policies(previously we created) by inputting scope ip's file.
+3- after finishing scan -> select respective scan result and goto vulnerabilities and search for "auth" , later check for all authenticated ip's are scanned or not.
+4- later search for "local bodies" and tally the number with "auth" successfull result.
+5- if authntication scan was not successful for few ip's, auth scan again for those ip's.
+6- after finishing all scans export nessus file and all reports(select custom and export)  
